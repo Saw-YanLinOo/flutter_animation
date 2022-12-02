@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animation/implicit_animations/explicit_animation_favourite.dart';
 
 const kAnimationDuration = Duration(milliseconds: 500);
 const kAnimationDurationForScreenFadeIn = Duration(milliseconds: 1000);
@@ -42,14 +43,23 @@ class _ImplicitAnimationsState extends State<ImplicitAnimations> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    AnimatedContainer(
-                      width: isNewDimension ? 350 : 250,
-                      height: isNewDimension ? 300 : 200,
-                      duration: kAnimationDuration,
-                      child: Image.asset(
-                        'assets/miki-mouse.png',
-                        fit: BoxFit.fill,
-                      ),
+                    Stack(
+                      children: [
+                        AnimatedContainer(
+                          width: isNewDimension ? 350 : 250,
+                          height: isNewDimension ? 300 : 200,
+                          duration: kAnimationDuration,
+                          child: Image.asset(
+                            'assets/miki-mouse.png',
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                        Positioned(
+                          top: 0,
+                          right: MARGIN_32,
+                          child: ExplicitAnimationFavouriteIconButton(),
+                        ),
+                      ],
                     ),
                     AnimatedSize(
                       duration: kAnimationDuration,
